@@ -8,6 +8,14 @@
     <!-- Add any other headers or links to CSS files here -->
 </head>
 <body>
+    <!-- Assuming this is in base.html or home.html -->
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'upload_algo' %}">Upload Algorithm</a>
+    <a href="{% url 'list_algos' %}">View All Algorithms</a>
+    <!-- Add more links as necessary -->
+</nav>
+
     <header>
         <h1>Welcome to the Trading Algorithm Sharing Platform</h1>
     </header>

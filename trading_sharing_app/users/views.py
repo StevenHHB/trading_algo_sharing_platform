@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import CustomUserCreationForm
 
@@ -14,8 +14,8 @@ def register(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.error(
-                request, "Unsuccessful registration. Invalid information.")
+            for field in form.errors:
+                messages.error(request, form.errors[field].as_text())
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
@@ -35,6 +35,12 @@ def user_login(request):
             messages.error(request, "Invalid username or password.")
 
     return render(request, 'users/login.html')
+
+
+def user_logout(request):
+    logout(request)
+    messages.success(request, "Successfully logged out!")
+    return render(request, 'login.html')
 
 
 def home(request):

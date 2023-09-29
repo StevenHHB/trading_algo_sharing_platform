@@ -1,0 +1,7 @@
+{% for algo in algos %}
+    <div class="algo">
+        <h3>{{ algo.name }}</h3>
+        <p>{{ algo.description }}</p>
+        <pre>{{ algo.code }}</pre>
+    </div>
+{% endfor %}
